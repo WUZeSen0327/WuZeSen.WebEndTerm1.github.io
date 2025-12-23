@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>智能购物商城 - 学号：25216950219 姓名：吴泽森</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- 页面头部 -->
+    <header>
+        <div class="container">
+            <div class="header-top">
+                <div class="logo">
+                    <i class="fas fa-shopping-bag"></i>
+                    智能购物商城
+                </div>
+                <div class="user-info">
+                    <span id="userName">欢迎来到智能购物商城</span>
+                    <div class="student-id">学号：25216950219 姓名：吴泽森</div>
+                </div>
+            </div>
+            <div class="header-bottom">
+                <nav>
+                    <ul>
+                        <li><a href="#" class="nav-link active" data-page="home">首页</a></li>
+                        <li><a href="#" class="nav-link" data-page="products">商品中心</a></li>
+                        <li><a href="#" class="nav-link" data-page="user-center">个人中心</a></li>
+                        <li><a href="#" class="nav-link" data-page="about">关于我们</a></li>
+                    </ul>
+                </nav>
+                <div class="search-box">
+                    <input type="text" id="searchInput" placeholder="搜索商品...">
+                    <button id="searchBtn"><i class="fas fa-search"></i></button>
+                </div>
+                <div class="cart-icon" id="cartIcon">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span class="cart-count" id="cartCount">0</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- 首页内容 -->
+    <section class="page active" id="home">
+        <div class="container">
+            <!-- 轮播图 -->
+            <div class="carousel">
+                <div class="carousel-slide active">
+                    <div>秋季新品上市</div>
+                </div>
+                <div class="carousel-slide">
+                    <div>限时抢购 低至5折</div>
+                </div>
+                <div class="carousel-slide">
+                    <div>会员专享优惠</div>
+                </div>
+                <div class="carousel-controls">
+                    <div class="carousel-dot active" data-index="0"></div>
+                    <div class="carousel-dot" data-index="1"></div>
+                    <div class="carousel-dot" data-index="2"></div>
+                </div>
+            </div>
+
+            <!-- 商品分类 -->
+            <section class="categories">
+                <h2 class="section-title">商品分类</h2>
+                <div class="category-list">
+                    <div class="category-item" data-category="electronics">
+                        <div class="category-icon">
+                            <i class="fas fa-laptop"></i>
+                        </div>
+                        <h3>电子产品</h3>
+                    </div>
+                    <div class="category-item" data-category="clothing">
+                        <div class="category-icon">
+                            <i class="fas fa-tshirt"></i>
+                        </div>
+                        <h3>服装服饰</h3>
+                    </div>
+                    <div class="category-item" data-category="books">
+                        <div class="category-icon">
+                            <i class="fas fa-book"></i>
+                        </div>
+                        <h3>图书音像</h3>
+                    </div>
+                    <div class="category-item" data-category="home">
+                        <div class="category-icon">
+                            <i class="fas fa-home"></i>
+                        </div>
+                        <h3>家居生活</h3>
+                    </div>
+                    <div class="category-item" data-category="sports">
+                        <div class="category-icon">
+                            <i class="fas fa-futbol"></i>
+                        </div>
+                        <h3>运动户外</h3>
+                    </div>
+                    <div class="category-item" data-category="food">
+                        <div class="category-icon">
+                            <i class="fas fa-utensils"></i>
+                        </div>
+                        <h3>食品饮料</h3>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 推荐商品 -->
+            <section class="products">
+                <h2 class="section-title">热销商品</h2>
+                <div class="product-grid" id="productGrid">
+                    <!-- 商品将通过JavaScript动态生成 -->
+                </div>
+            </section>
+        </div>
+    </section>
+
+    <!-- 商品中心 -->
+    <section class="page" id="products">
+        <div class="container">
+            <h1 class="section-title">商品中心</h1>
+            <div class="product-filter" style="margin-bottom: 30px;">
+                <button class="btn btn-outline active" data-filter="all">全部</button>
+                <button class="btn btn-outline" data-filter="electronics">电子产品</button>
+                <button class="btn btn-outline" data-filter="clothing">服装服饰</button>
+                <button class="btn btn-outline" data-filter="books">图书音像</button>
+                <button class="btn btn-outline" data-filter="home">家居生活</button>
+            </div>
+            <div class="product-grid" id="allProductsGrid">
+                <!-- 所有商品将通过JavaScript动态生成 -->
+            </div>
+        </div>
+    </section>
+
+    <!-- 个人中心 -->
+    <section class="page" id="user-center">
+        <div class="container">
+            <div class="user-center">
+                <div class="user-sidebar">
+                    <div class="user-avatar">
+                        <div class="avatar">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <h3 id="currentUserName">未登录用户</h3>
+                    </div>
+                    <ul class="user-menu">
+                        <li><a href="#" class="user-menu-link active" data-section="profile">个人信息</a></li>
+                        <li><a href="#" class="user-menu-link" data-section="orders">我的订单</a></li>
+                        <li><a href="#" class="user-menu-link" data-section="address">收货地址</a></li>
+                        <li><a href="#" class="user-menu-link" data-section="security">账户安全</a></li>
+                        <li><a href="#" id="logoutBtn">退出登录</a></li>
+                    </ul>
+                </div>
+                <div class="user-content">
+                    <div id="profileSection" class="user-section active">
+                        <h2>个人信息</h2>
+                        <div class="form-group">
+                            <label>用户名</label>
+                            <input type="text" id="profileUsername" value="未登录" readonly>
+                        </div>
+                        <div class="form-group">
+                            <label>邮箱</label>
+                            <input type="email" id="profileEmail" value="未登录" readonly>
+                        </div>
+                        <div class="form-group">
+                            <label>注册时间</label>
+                            <input type="text" id="profileRegisterTime" value="未登录" readonly>
+                        </div>
+                        <div class="form-group">
+                            <label>会员等级</label>
+                            <input type="text" id="profileLevel" value="普通会员" readonly>
+                        </div>
+                    </div>
+                    
+                    <div id="ordersSection" class="user-section">
+                        <h2>我的订单</h2>
+                        <div class="order-history" id="orderHistory">
+                            <!-- 订单将通过JavaScript动态生成 -->
+                        </div>
+                    </div>
+                    
+                    <div id="addressSection" class="user-section">
+                        <h2>收货地址</h2>
+                        <div id="addressList">
+                            <!-- 地址将通过JavaScript动态生成 -->
+                        </div>
+                        <button class="btn btn-primary" id="addAddressBtn">添加新地址</button>
+                    </div>
+                    
+                    <div id="securitySection" class="user-section">
+                        <h2>账户安全</h2>
+                        <div class="form-group">
+                            <label>修改密码</label>
+                            <input type="password" id="newPassword" placeholder="新密码">
+                        </div>
+                        <div class="form-group">
+                            <label>确认密码</label>
+                            <input type="password" id="confirmPassword" placeholder="确认新密码">
+                        </div>
+                        <button class="btn btn-primary" id="changePasswordBtn">修改密码</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 关于我们 -->
+    <section class="page" id="about">
+        <div class="container">
+            <h1 class="section-title">关于我们</h1>
+            <div class="about-content">
+                <h2>智能购物商城简介</h2>
+                <p>智能购物商城是基于《Web编程技术》大作业要求设计并实现的综合性电商平台。本系统实现了用户注册登录、商品展示、购物车管理、订单提交等核心功能，采用了HTML5、CSS3、JavaScript等现代Web技术。</p>
+                <p>本系统特点：</p>
+                <ul>
+                    <li>响应式设计，适配各种设备屏幕</li>
+                    <li>用户友好的界面，美观大方</li>
+                    <li>完整的购物流程：浏览商品→加入购物车→提交订单</li>
+                    <li>用户注册登录系统，具备表单验证功能</li>
+                    <li>购物车支持增、删、改、查操作</li>
+                </ul>
+                
+                <p class="footer-note">本系统为《Web编程技术》大作业成果，由学号25216950219、姓名吴泽森设计实现。</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 登录/注册模态框 -->
+    <div class="modal" id="authModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title">用户登录/注册</h3>
+                <button class="modal-close" id="authModalClose">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="auth-tabs">
+                    <div class="auth-tab active" data-tab="login">登录</div>
+                    <div class="auth-tab" data-tab="register">注册</div>
+                </div>
+                
+                <form id="loginForm" class="auth-form active">
+                    <div class="form-group">
+                        <label for="loginUsername">用户名</label>
+                        <input type="text" id="loginUsername" placeholder="请输入用户名">
+                        <div class="error-message" id="loginUsernameError"></div>
+                    </div>
+                    <div class="form-group">
+                        <label for="loginPassword">密码</label>
+                        <input type="password" id="loginPassword" placeholder="请输入密码">
+                        <div class="error-message" id="loginPasswordError"></div>
+                    </div>
+                    <button type="submit" class="btn btn-primary" style="width: 100%;">登录</button>
+                </form>
+                
+                <form id="registerForm" class="auth-form">
+                    <div class="form-group">
+                        <label for="registerUsername">用户名</label>
+                        <input type="text" id="registerUsername" placeholder="请输入用户名（3-10位字符）">
+                        <div class="error-message" id="registerUsernameError"></div>
+                    </div>
+                    <div class="form-group">
+                        <label for="registerEmail">邮箱</label>
+                        <input type="email" id="registerEmail" placeholder="请输入邮箱">
+                        <div class="error-message" id="registerEmailError"></div>
+                    </div>
+                    <div class="form-group">
+                        <label for="registerPassword">密码</label>
+                        <input type="password" id="registerPassword" placeholder="请输入密码（6-12位字符）">
+                        <div class="error-message" id="registerPasswordError"></div>
+                    </div>
+                    <div class="form-group">
+                        <label for="registerConfirmPassword">确认密码</label>
+                        <input type="password" id="registerConfirmPassword" placeholder="请再次输入密码">
+                        <div class="error-message" id="registerConfirmPasswordError"></div>
+                    </div>
+                    <button type="submit" class="btn btn-secondary" style="width: 100%;">注册</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- 购物车模态框 -->
+    <div class="modal cart-modal" id="cartModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title">我的购物车</h3>
+                <button class="modal-close" id="cartModalClose">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="cart-items" id="cartItems">
+                    <!-- 购物车商品将通过JavaScript动态生成 -->
+                </div>
+                
+                <div class="cart-summary">
+                    <div class="cart-summary-row">
+                        <span>商品总数：</span>
+                        <span id="cartTotalItems">0</span>
+                    </div>
+                    <div class="cart-summary-row">
+                        <span>商品总价：</span>
+                        <span id="cartSubtotal">¥0.00</span>
+                    </div>
+                    <div class="cart-summary-row">
+                        <span>运费：</span>
+                        <span id="cartShipping">¥0.00</span>
+                    </div>
+                    <div class="cart-summary-row cart-total">
+                        <span>应付总额：</span>
+                        <span id="cartTotal">¥0.00</span>
+                    </div>
+                    <button class="btn btn-primary" style="width: 100%; margin-top: 20px;" id="checkoutBtn">去结算</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 商品详情模态框 -->
+    <div class="modal" id="productDetailModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title">商品详情</h3>
+                <button class="modal-close" id="productDetailModalClose">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div id="productDetailContent">
+                    <!-- 商品详情将通过JavaScript动态生成 -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 页脚 -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>智能购物商城</h3>
+                    <p>为您提供优质的商品和便捷的购物体验。我们致力于成为最值得信赖的在线购物平台。</p>
+                </div>
+                <div class="footer-section">
+                    <h3>快速链接</h3>
+                    <ul class="footer-links">
+                        <li><a href="#" class="nav-link" data-page="home">首页</a></li>
+                        <li><a href="#" class="nav-link" data-page="products">商品中心</a></li>
+                        <li><a href="#" class="nav-link" data-page="user-center">个人中心</a></li>
+                        <li><a href="#" class="nav-link" data-page="about">关于我们</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>联系我们</h3>
+                    <ul class="footer-links">
+                        <li><i class="fas fa-map-marker-alt"></i> 北京市海淀区中关村大街1号</li>
+                        <li><i class="fas fa-phone"></i> 400-123-4567</li>
+                        <li><i class="fas fa-envelope"></i> support@smartshop.com</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2025 智能购物商城. 版权所有. 学号：25216950219 姓名：吴泽森 - 《Web编程技术》大作业</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+</html>
